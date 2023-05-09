@@ -2173,7 +2173,7 @@
         ]
       },
       {
-        "name": "About",
+        "name": "About_NewName",
         "description": [
           "Table with information about the model.",
           "Key/Value representation, with properties like: last refresh; model creator;..."
