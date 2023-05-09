@@ -753,19 +753,6 @@
             ]
           },
           {
-            "name": "Currency Code",
-            "dataType": "string",
-            "sourceColumn": "Currency Code",
-            "lineageTag": "a75ba79f-22a3-4bfd-9b52-80e5d73247a9",
-            "summarizeBy": "none",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ]
-          },
-          {
             "name": "Exchange Rate",
             "dataType": "decimal",
             "sourceColumn": "Exchange Rate",
@@ -806,6 +793,19 @@
             "sourceColumn": "Order Number",
             "formatString": "0",
             "lineageTag": "e2e629f1-f1fb-4444-a627-b121d77fdc06",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Currency Code_NewName",
+            "dataType": "string",
+            "sourceColumn": "Currency Code",
+            "lineageTag": "a75ba79f-22a3-4bfd-9b52-80e5d73247a9",
             "summarizeBy": "none",
             "annotations": [
               {
@@ -2052,9 +2052,6 @@
                 "name": "Unit Cost"
               },
               {
-                "name": "Currency Code"
-              },
-              {
                 "name": "Exchange Rate"
               },
               {
@@ -2062,6 +2059,9 @@
               },
               {
                 "name": "Z_Order Number"
+              },
+              {
+                "name": "Currency Code_NewName"
               }
             ],
             "measures": [

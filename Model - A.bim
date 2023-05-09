@@ -824,7 +824,7 @@
             ]
           },
           {
-            "name": "Currency Code",
+            "name": "Currency Code_NewName",
             "dataType": "string",
             "sourceColumn": "Currency Code",
             "lineageTag": "a75ba79f-22a3-4bfd-9b52-80e5d73247a9",
@@ -2333,7 +2333,7 @@
                 "name": "Unit Cost"
               },
               {
-                "name": "Currency Code"
+                "name": "Currency Code_NewName"
               },
               {
                 "name": "Exchange Rate"
