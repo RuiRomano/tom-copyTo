@@ -35,9 +35,9 @@ foreach ($nuget in $nugets)
    
 }
 
-$sourceModel = [Microsoft.AnalysisServices.Tabular.JsonSerializer]::DeserializeDatabase((Get-Content $sourceModelPath))
+$sourceModel = [Microsoft.AnalysisServices.Tabular.JsonSerializer]::DeserializeDatabase([System.IO.File]::ReadAllText($sourceModelPath))
 
-$targetModel = [Microsoft.AnalysisServices.Tabular.JsonSerializer]::DeserializeDatabase((Get-Content $targetModelPath))
+$targetModel = [Microsoft.AnalysisServices.Tabular.JsonSerializer]::DeserializeDatabase([System.IO.File]::ReadAllText($targetModelPath))
 
 $finalModel = $sourceModel.CopyTo($targetModel)
 

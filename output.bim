@@ -1098,28 +1098,6 @@
             ]
           },
           {
-            "name": "Weight",
-            "dataType": "decimal",
-            "sourceColumn": "Weight",
-            "lineageTag": "a6299b36-bd05-4b41-8493-e45359af237b",
-            "summarizeBy": "none",
-            "changedProperties": [
-              {
-                "property": "DataType"
-              }
-            ],
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              },
-              {
-                "name": "PBI_FormatHint",
-                "value": "{\"isGeneralNumber\":true}"
-              }
-            ]
-          },
-          {
             "name": "Unit Cost",
             "dataType": "decimal",
             "sourceColumn": "Unit Cost",
@@ -1212,6 +1190,28 @@
               {
                 "name": "SummarizationSetBy",
                 "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Weight2",
+            "dataType": "decimal",
+            "sourceColumn": "Weight",
+            "lineageTag": "a6299b36-bd05-4b41-8493-e45359af237b",
+            "summarizeBy": "none",
+            "changedProperties": [
+              {
+                "property": "DataType"
+              }
+            ],
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
               }
             ]
           }
@@ -2140,9 +2140,6 @@
                 "name": "Weight Unit Measure"
               },
               {
-                "name": "Weight"
-              },
-              {
                 "name": "Unit Cost"
               },
               {
@@ -2159,6 +2156,9 @@
               },
               {
                 "name": "Category"
+              },
+              {
+                "name": "Weight2"
               }
             ],
             "measures": [

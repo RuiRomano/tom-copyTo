@@ -1222,7 +1222,7 @@
             ]
           },
           {
-            "name": "Weight",
+            "name": "Weight2",
             "dataType": "decimal",
             "sourceColumn": "Weight",
             "lineageTag": "a6299b36-bd05-4b41-8493-e45359af237b",
@@ -2418,7 +2418,7 @@
                 "name": "Weight Unit Measure"
               },
               {
-                "name": "Weight"
+                "name": "Weight2"
               },
               {
                 "name": "Unit Cost"
