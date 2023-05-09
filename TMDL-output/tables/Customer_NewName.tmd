@@ -1,7 +1,7 @@
 /// Customer data
-table Customer
+table Customer_NewName
 	lineageTag: 04227f5a-0aeb-4448-b5c5-dbf3e276da85
-	ordinal: 4
+	ordinal: 8
 
 	partition 'Customer-3757b886-e26c-4cec-a550-cdeea37b94d4' = M
 		mode: Import
@@ -44,6 +44,15 @@ table Customer
 		isDefaultLabel
 		lineageTag: 8845f8b5-b069-41a0-8af8-12e402b113e9
 		sourceColumn: Customer
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column Address_NewName
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: adbeb074-7c67-40ee-be2d-d46775ce5e17
+		sourceColumn: Address
 		summarizeBy: None
 
 		annotation SummarizationSetBy = Automatic
@@ -134,15 +143,6 @@ table Customer
 		isDataTypeInferred: false
 		lineageTag: 5c487309-c061-45ed-aa74-aba4d20bde3b
 		sourceColumn: Age
-		summarizeBy: None
-
-		annotation SummarizationSetBy = Automatic
-
-	column Address_NewName
-		dataType: String
-		isDataTypeInferred: false
-		lineageTag: adbeb074-7c67-40ee-be2d-d46775ce5e17
-		sourceColumn: Address
 		summarizeBy: None
 
 		annotation SummarizationSetBy = Automatic

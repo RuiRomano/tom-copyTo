@@ -2,7 +2,7 @@
 /// Key/Value representation, with properties like: last refresh; model creator;...
 table About
 	lineageTag: 68907830-e8ac-4c12-98d9-f70711413080
-	ordinal: 8
+	ordinal: 7
 
 	partition 'About-77c21240-7751-4575-bf40-8c068bfd01cd' = M
 		mode: Import
