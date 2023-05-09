@@ -574,7 +574,21 @@
             ]
           },
           {
-            "name": "Line Number",
+            "name": "Z_Order Number",
+            "dataType": "int64",
+            "sourceColumn": "Order Number",
+            "formatString": "0",
+            "lineageTag": "e2e629f1-f1fb-4444-a627-b121d77fdc06",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Line Number_C",
             "dataType": "int64",
             "sourceColumn": "Line Number",
             "formatString": "0",
@@ -753,6 +767,19 @@
             ]
           },
           {
+            "name": "Currency Code_NewName",
+            "dataType": "string",
+            "sourceColumn": "Currency Code",
+            "lineageTag": "a75ba79f-22a3-4bfd-9b52-80e5d73247a9",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
             "name": "Exchange Rate",
             "dataType": "decimal",
             "sourceColumn": "Exchange Rate",
@@ -779,33 +806,6 @@
             "dataType": "string",
             "sourceColumn": "Environment",
             "lineageTag": "05fb6ae8-19b4-40c5-81b2-e40a6edd8692",
-            "summarizeBy": "none",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ]
-          },
-          {
-            "name": "Z_Order Number",
-            "dataType": "int64",
-            "sourceColumn": "Order Number",
-            "formatString": "0",
-            "lineageTag": "e2e629f1-f1fb-4444-a627-b121d77fdc06",
-            "summarizeBy": "none",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ]
-          },
-          {
-            "name": "Currency Code_NewName",
-            "dataType": "string",
-            "sourceColumn": "Currency Code",
-            "lineageTag": "a75ba79f-22a3-4bfd-9b52-80e5d73247a9",
             "summarizeBy": "none",
             "annotations": [
               {
@@ -994,462 +994,6 @@
           {
             "name": "PBI_NavigationStepName",
             "value": "Navigation"
-          }
-        ]
-      },
-      {
-        "name": "Smart Calcs",
-        "lineageTag": "fa79b28a-6a9c-43b1-a775-099dabcd4428",
-        "calculationGroup": {
-          "calculationItems": [
-            {
-              "name": "Normalize",
-              "expression": "VAR DetailValue = SELECTEDMEASURE()\n\nreturn if (DetailValue, \n\n    VAR MinOfGroup = MINX(ALLSELECTED('Calendar'), SELECTEDMEASURE())\n    VAR MaxOfGroup = MAXX(ALLSELECTED('Calendar'), SELECTEDMEASURE())\n\n    RETURN DIVIDE(DetailValue - MinOfGroup, MaxOfGroup - MinOfGroup)\n)",
-              "formatStringDefinition": {
-                "expression": "\"0.0\""
-              }
-            },
-            {
-              "name": "Randomize",
-              "expression": "IFERROR(SELECTEDMEASURE() * RAND(), SELECTEDMEASURE())"
-            },
-            {
-              "name": "Label - ▲ LY",
-              "expression": "var vValue = SELECTEDMEASURE()\nvar vValueLY = CALCULATE(SELECTEDMEASURE(), SAMEPERIODLASTYEAR('Calendar'[Date]))\nvar vGrowth = DIVIDE(vValue - vValueLY, vValueLY)\nvar vFormat = SELECTEDMEASUREFORMATSTRING()\n\nreturn\n    FORMAT(vValue, vFormat)\n    & IF (ISBLANK(vGrowth)\n        , BLANK()\n        , \" | \"    \n        & IF (vGrowth >= 0, \"▲\" , \"▼\") & FORMAT(vGrowth, \"0%\")\n    )\n",
-              "formatStringDefinition": {
-                "expression": "SELECTEDMEASUREFORMATSTRING()"
-              }
-            },
-            {
-              "name": "Dynamic Measure - Apply Format",
-              "expression": "SELECTEDMEASURE()",
-              "formatStringDefinition": {
-                "expression": "\nIF (\n    // Only do this for the 'Dynamic Measure' Measures\n    ISSELECTEDMEASURE ( [Value], [Value (ly)], [Value (ytd)], [Value Avg per Month] ),\n        VAR measureCode =\n            SELECTEDVALUE ( 'Dynamic Measure'[Code] )\n        VAR measureFormat =\n            IF (\n                measureCode <> BLANK (),\n                LOOKUPVALUE ( 'Dynamic Measure'[Format], 'Dynamic Measure'[Code], measureCode )\n            )\n        RETURN\n            IF ( measureFormat <> BLANK (), measureFormat, SELECTEDMEASUREFORMATSTRING () )\n    \n   , SELECTEDMEASUREFORMATSTRING ()\n)"
-              }
-            },
-            {
-              "name": "Label - ▲ LM",
-              "expression": "var vValue = SELECTEDMEASURE()\nvar vValueLM = CALCULATE(SELECTEDMEASURE(), PREVIOUSMONTH('Calendar'[Date]))\nvar vGrowth = DIVIDE(vValue - vValueLM, vValueLM)\nvar vFormat = SELECTEDMEASUREFORMATSTRING()\n\nreturn\n    FORMAT(vValue, vFormat)\n    & IF (ISBLANK(vGrowth)\n        , BLANK()\n        , \" | \"    \n        & IF (vGrowth >= 0, \"▲\" , \"▼\") & FORMAT(vGrowth, \"0%\")\n    )\n",
-              "formatStringDefinition": {
-                "expression": "SELECTEDMEASUREFORMATSTRING()"
-              }
-            }
-          ]
-        },
-        "columns": [
-          {
-            "name": "Smart Calc",
-            "dataType": "string",
-            "sourceColumn": "Name",
-            "sortByColumn": "Ordinal",
-            "lineageTag": "005e8b9e-378a-421a-905c-f21dad946ceb",
-            "summarizeBy": "none",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ]
-          },
-          {
-            "name": "Ordinal",
-            "dataType": "int64",
-            "isHidden": true,
-            "sourceColumn": "Ordinal",
-            "lineageTag": "2532b358-06e7-449d-a944-810f51fff7a5",
-            "summarizeBy": "none",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "User"
-              }
-            ]
-          }
-        ],
-        "partitions": [
-          {
-            "name": "Partition",
-            "mode": "import",
-            "source": {
-              "type": "calculationGroup"
-            }
-          }
-        ]
-      },
-      {
-        "name": "Dynamic Measure",
-        "description": "Dynamic Measure table\nUseful to explore measure \"as a dimension\"",
-        "lineageTag": "208f785d-03c1-41ca-b33a-c56c36916caa",
-        "columns": [
-          {
-            "type": "calculatedTableColumn",
-            "name": "Code",
-            "dataType": "int64",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "[Code]",
-            "formatString": "0",
-            "lineageTag": "a5db8d3b-70af-483d-bcab-5c0fcc7478c2",
-            "summarizeBy": "none",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "User"
-              }
-            ]
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "Order",
-            "dataType": "int64",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "[Order]",
-            "formatString": "0",
-            "lineageTag": "c7824b9c-021c-4bff-b363-c04b3cb2c681",
-            "summarizeBy": "none",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "User"
-              }
-            ]
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "Measure",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "[Measure]",
-            "lineageTag": "d8e3ae78-fda2-49e6-b8cb-b6257e927261",
-            "summarizeBy": "none",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ]
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "Area",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "[Area]",
-            "lineageTag": "364ae39d-73bd-4527-91e4-0e649a23d8a7",
-            "summarizeBy": "none",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ]
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "Format",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "[Format]",
-            "lineageTag": "ec17695c-dc59-4674-bdaa-bbdeb4131593",
-            "summarizeBy": "none",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ]
-          }
-        ],
-        "partitions": [
-          {
-            "name": "Dynamic Measure-e40351ed-a523-4ff4-9185-7834b3fbb8e8",
-            "mode": "import",
-            "source": {
-              "type": "calculated",
-              "expression": "\nDATATABLE (\n    \"Code\", INTEGER,\n    \"Order\", INTEGER,\n    \"Measure\", STRING,\n    \"Area\", STRING,\n    \"Format\", STRING,\n    { \n        { 1, 1, \"Sales Amount\", \"Sales\", \"\\$#,0.00;(\\$#,0.00);\\$#,0.00\" },\n        { 2, 2, \"Sales Growth vs LY\", \"Sales\", \"0.000%\"},\n        { 3, 4, \"# Customers\", \"Marketing\", \"#,#\" },              \n        { 4, 2, \"Sales Qty\", \"Sales\", \"#,#\" },\n        { 5, 2, \"Sales Margin\", \"Sales\", \"\\$#,0.00;(\\$#,0.00);\\$#,0.00\" }\n    } \n)\n"
-            }
-          }
-        ],
-        "measures": [
-          {
-            "name": "Value",
-            "expression": "\nIF (\n    HASONEVALUE ( 'Dynamic Measure'[Code] ),\n    var measureCode = SELECTEDVALUE('Dynamic Measure'[Code])\n    return SWITCH (\n       measureCode\n        ,1, [Sales Amount]\n        ,2, [Sales Amount  (% Δ LY)]\n        ,3, [# Customers (with Sales)]   \n        ,4, [Sales Qty]\n        ,5, [Margin]\n        ,BLANK ()\n    )\n)",
-            "lineageTag": "1f748dd6-758e-4445-bf6c-dab17d61d2ee",
-            "annotations": [
-              {
-                "name": "BestPracticeAnalyzer_IgnoreRules",
-                "value": "{\"RuleIDs\":[\"PROVIDE_FORMAT_STRING_FOR_MEASURES\",\"INTEGER_FORMATTING\"]}"
-              },
-              {
-                "name": "PBI_FormatHint",
-                "value": "{\"isGeneralNumber\":true}"
-              }
-            ]
-          },
-          {
-            "name": "Value (ly)",
-            "expression": "CALCULATE ( [Value], SAMEPERIODLASTYEAR('Calendar'[Date]) )",
-            "lineageTag": "59781612-6890-4665-a1b2-aa25324fe896",
-            "annotations": [
-              {
-                "name": "BestPracticeAnalyzer_IgnoreRules",
-                "value": "{\"RuleIDs\":[\"PROVIDE_FORMAT_STRING_FOR_MEASURES\",\"INTEGER_FORMATTING\"]}"
-              },
-              {
-                "name": "PBI_FormatHint",
-                "value": "{\"isGeneralNumber\":true}"
-              }
-            ]
-          },
-          {
-            "name": "Value (ytd)",
-            "expression": "CALCULATE([Value], DATESYTD('Calendar'[Date]))",
-            "lineageTag": "b01909c9-718c-48d2-98af-482b39bf2272",
-            "annotations": [
-              {
-                "name": "BestPracticeAnalyzer_IgnoreRules",
-                "value": "{\"RuleIDs\":[\"PROVIDE_FORMAT_STRING_FOR_MEASURES\",\"INTEGER_FORMATTING\"]}"
-              }
-            ]
-          },
-          {
-            "name": "Value Avg per Month",
-            "expression": "\n AVERAGEX(VALUES('Calendar'[Month (Year)]), [Value])",
-            "lineageTag": "ba87b819-2147-443b-aaeb-8ae1729c6550",
-            "annotations": [
-              {
-                "name": "BestPracticeAnalyzer_IgnoreRules",
-                "value": "{\"RuleIDs\":[\"PROVIDE_FORMAT_STRING_FOR_MEASURES\",\"INTEGER_FORMATTING\"]}"
-              },
-              {
-                "name": "PBI_FormatHint",
-                "value": "{\"isGeneralNumber\":true}"
-              }
-            ]
-          },
-          {
-            "name": "Value Daily Max",
-            "expression": "MAXX(VALUES('Calendar'[Date]), [Value])",
-            "lineageTag": "d8fbae5f-a0c0-4b2e-85e9-1e045d7510e0",
-            "annotations": [
-              {
-                "name": "BestPracticeAnalyzer_IgnoreRules",
-                "value": "{\"RuleIDs\":[\"PROVIDE_FORMAT_STRING_FOR_MEASURES\",\"INTEGER_FORMATTING\"]}"
-              },
-              {
-                "name": "PBI_FormatHint",
-                "value": "{\"isGeneralNumber\":true}"
-              }
-            ]
-          },
-          {
-            "name": "Value % (Δ ly)",
-            "expression": "\nvar ly =[Value (ly)]\nreturn\nDIVIDE(\n        [Value]- ly,\n        ly\n    )",
-            "formatString": "0.00%;-0.00%;0.00%",
-            "lineageTag": "897fe824-eb94-4ec9-996e-26238f4c2b23",
-            "changedProperties": [
-              {
-                "property": "FormatString"
-              }
-            ]
-          },
-          {
-            "name": "Value Normalized (by date)",
-            "expression": "\nVAR DetailValue = [Value]\nreturn if (DetailValue, \n\n    //VAR MinOfGroup = MINX(ALLSELECTED('Calendar'[Month (Year)], 'Calendar'[MonthYearId]), [Value])\n    //VAR MaxOfGroup = MAXX(ALLSELECTED('Calendar'[Month (Year)], 'Calendar'[MonthYearId]), [Value])\n    VAR MinOfGroup = MINX(ALLSELECTED('Calendar'), [Value])\n    VAR MaxOfGroup = MAXX(ALLSELECTED('Calendar'), [Value])\n    RETURN DIVIDE(DetailValue - MinOfGroup, MaxOfGroup - MinOfGroup)\n)",
-            "lineageTag": "15549406-fb29-46e8-9094-25add2c74995",
-            "annotations": [
-              {
-                "name": "BestPracticeAnalyzer_IgnoreRules",
-                "value": "{\"RuleIDs\":[\"PROVIDE_FORMAT_STRING_FOR_MEASURES\",\"INTEGER_FORMATTING\"]}"
-              },
-              {
-                "name": "PBI_FormatHint",
-                "value": "{\"isGeneralNumber\":true}"
-              }
-            ]
-          }
-        ],
-        "annotations": [
-          {
-            "name": "PBI_Id",
-            "value": "4d2f308d1af14ea3accf3c458621a9d7"
-          },
-          {
-            "name": "BestPracticeAnalyzer_IgnoreRules",
-            "value": "{\"RuleIDs\":[\"REDUCE_USAGE_OF_CALCULATED_TABLES\",\"ENSURE_TABLES_HAVE_RELATIONSHIPS\"]}"
-          }
-        ]
-      },
-      {
-        "name": "Store",
-        "description": "Store metadata",
-        "lineageTag": "54d5f884-12db-4e03-a120-08cd725db2c4",
-        "columns": [
-          {
-            "name": "StoreKey",
-            "dataType": "int64",
-            "isKey": true,
-            "sourceColumn": "StoreKey",
-            "formatString": "0",
-            "isAvailableInMdx": false,
-            "lineageTag": "b63bc7b8-266a-4424-9676-c3e68501b2ec",
-            "summarizeBy": "none",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ]
-          },
-          {
-            "name": "Store Code",
-            "dataType": "string",
-            "sourceColumn": "Store Code",
-            "lineageTag": "307e3348-2132-4db3-b76a-771ac4561ef5",
-            "summarizeBy": "none",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ]
-          },
-          {
-            "name": "Country",
-            "dataType": "string",
-            "sourceColumn": "Country",
-            "lineageTag": "7564fe29-ad01-43e0-ba93-2e1634e1a9b3",
-            "dataCategory": "Country",
-            "summarizeBy": "none",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ]
-          },
-          {
-            "name": "State",
-            "dataType": "string",
-            "sourceColumn": "State",
-            "lineageTag": "f471c9c0-1924-46e4-99d8-59ccf0f64cba",
-            "summarizeBy": "none",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ]
-          },
-          {
-            "name": "Store",
-            "dataType": "string",
-            "sourceColumn": "Store",
-            "lineageTag": "7bee915f-7eb7-4dbc-a16f-e796f410b3f5",
-            "isDefaultLabel": true,
-            "summarizeBy": "none",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ]
-          },
-          {
-            "name": "Square Meters",
-            "dataType": "int64",
-            "sourceColumn": "Square Meters",
-            "formatString": "0",
-            "lineageTag": "1596588a-acc4-41c4-a692-310fd28994bb",
-            "summarizeBy": "none",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ]
-          },
-          {
-            "name": "Open Date",
-            "dataType": "dateTime",
-            "sourceColumn": "Open Date",
-            "formatString": "Long Date",
-            "lineageTag": "66cf5168-4add-4a05-b2c8-0380a85b0539",
-            "summarizeBy": "none",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              },
-              {
-                "name": "UnderlyingDateTimeDataType",
-                "value": "Date"
-              }
-            ]
-          },
-          {
-            "name": "Close Date",
-            "dataType": "dateTime",
-            "sourceColumn": "Close Date",
-            "formatString": "Long Date",
-            "lineageTag": "e627ea17-3b62-46f2-a2f4-549dc98beb06",
-            "summarizeBy": "none",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              },
-              {
-                "name": "UnderlyingDateTimeDataType",
-                "value": "Date"
-              }
-            ]
-          },
-          {
-            "name": "Status",
-            "dataType": "string",
-            "sourceColumn": "Status",
-            "lineageTag": "93122991-3d6a-413c-ad26-3610fa90013b",
-            "summarizeBy": "none",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ]
-          }
-        ],
-        "partitions": [
-          {
-            "name": "Store-c0e5ba98-f95a-4712-91ec-71c7dc35e177",
-            "mode": "import",
-            "source": {
-              "type": "m",
-              "expression": "let\n    Source = #\"RAW-Store\",\n    #\"Renamed Columns\" = Table.RenameColumns(Source,{{\"Name\", \"Store\"}}),\n    #\"Changed Type\" = Table.TransformColumnTypes(#\"Renamed Columns\",{{\"StoreKey\", Int64.Type}, {\"Store Code\", type text}, {\"Country\", type text}, {\"State\", type text}, {\"Store\", type text}, {\"Square Meters\", Int64.Type}, {\"Open Date\", type date}, {\"Close Date\", type date}, {\"Status\", type text}})\nin\n    #\"Changed Type\""
-            }
-          }
-        ],
-        "measures": [
-          {
-            "name": "# Stores",
-            "expression": "COUNTROWS('Store')",
-            "formatString": "#,##0",
-            "lineageTag": "868df9c8-f579-47d1-a776-3d29121df7c7",
-            "changedProperties": [
-              {
-                "property": "FormatString"
-              }
-            ]
-          }
-        ],
-        "annotations": [
-          {
-            "name": "PBI_ResultType",
-            "value": "Table"
           }
         ]
       },
@@ -1916,6 +1460,462 @@
         ]
       },
       {
+        "name": "Smart Calcs",
+        "lineageTag": "fa79b28a-6a9c-43b1-a775-099dabcd4428",
+        "calculationGroup": {
+          "calculationItems": [
+            {
+              "name": "Normalize",
+              "expression": "VAR DetailValue = SELECTEDMEASURE()\n\nreturn if (DetailValue, \n\n    VAR MinOfGroup = MINX(ALLSELECTED('Calendar'), SELECTEDMEASURE())\n    VAR MaxOfGroup = MAXX(ALLSELECTED('Calendar'), SELECTEDMEASURE())\n\n    RETURN DIVIDE(DetailValue - MinOfGroup, MaxOfGroup - MinOfGroup)\n)",
+              "formatStringDefinition": {
+                "expression": "\"0.0\""
+              }
+            },
+            {
+              "name": "Randomize",
+              "expression": "IFERROR(SELECTEDMEASURE() * RAND(), SELECTEDMEASURE())"
+            },
+            {
+              "name": "Label - ▲ LY",
+              "expression": "var vValue = SELECTEDMEASURE()\nvar vValueLY = CALCULATE(SELECTEDMEASURE(), SAMEPERIODLASTYEAR('Calendar'[Date]))\nvar vGrowth = DIVIDE(vValue - vValueLY, vValueLY)\nvar vFormat = SELECTEDMEASUREFORMATSTRING()\n\nreturn\n    FORMAT(vValue, vFormat)\n    & IF (ISBLANK(vGrowth)\n        , BLANK()\n        , \" | \"    \n        & IF (vGrowth >= 0, \"▲\" , \"▼\") & FORMAT(vGrowth, \"0%\")\n    )\n",
+              "formatStringDefinition": {
+                "expression": "SELECTEDMEASUREFORMATSTRING()"
+              }
+            },
+            {
+              "name": "Dynamic Measure - Apply Format",
+              "expression": "SELECTEDMEASURE()",
+              "formatStringDefinition": {
+                "expression": "\nIF (\n    // Only do this for the 'Dynamic Measure' Measures\n    ISSELECTEDMEASURE ( [Value], [Value (ly)], [Value (ytd)], [Value Avg per Month] ),\n        VAR measureCode =\n            SELECTEDVALUE ( 'Dynamic Measure'[Code] )\n        VAR measureFormat =\n            IF (\n                measureCode <> BLANK (),\n                LOOKUPVALUE ( 'Dynamic Measure'[Format], 'Dynamic Measure'[Code], measureCode )\n            )\n        RETURN\n            IF ( measureFormat <> BLANK (), measureFormat, SELECTEDMEASUREFORMATSTRING () )\n    \n   , SELECTEDMEASUREFORMATSTRING ()\n)"
+              }
+            },
+            {
+              "name": "Label - ▲ LM",
+              "expression": "var vValue = SELECTEDMEASURE()\nvar vValueLM = CALCULATE(SELECTEDMEASURE(), PREVIOUSMONTH('Calendar'[Date]))\nvar vGrowth = DIVIDE(vValue - vValueLM, vValueLM)\nvar vFormat = SELECTEDMEASUREFORMATSTRING()\n\nreturn\n    FORMAT(vValue, vFormat)\n    & IF (ISBLANK(vGrowth)\n        , BLANK()\n        , \" | \"    \n        & IF (vGrowth >= 0, \"▲\" , \"▼\") & FORMAT(vGrowth, \"0%\")\n    )\n",
+              "formatStringDefinition": {
+                "expression": "SELECTEDMEASUREFORMATSTRING()"
+              }
+            }
+          ]
+        },
+        "columns": [
+          {
+            "name": "Smart Calc",
+            "dataType": "string",
+            "sourceColumn": "Name",
+            "sortByColumn": "Ordinal",
+            "lineageTag": "005e8b9e-378a-421a-905c-f21dad946ceb",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Ordinal",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "Ordinal",
+            "lineageTag": "2532b358-06e7-449d-a944-810f51fff7a5",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "mode": "import",
+            "source": {
+              "type": "calculationGroup"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Dynamic Measure",
+        "description": "Dynamic Measure table\nUseful to explore measure \"as a dimension\"",
+        "lineageTag": "208f785d-03c1-41ca-b33a-c56c36916caa",
+        "columns": [
+          {
+            "type": "calculatedTableColumn",
+            "name": "Code",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Code]",
+            "formatString": "0",
+            "lineageTag": "a5db8d3b-70af-483d-bcab-5c0fcc7478c2",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ]
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Order",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Order]",
+            "formatString": "0",
+            "lineageTag": "c7824b9c-021c-4bff-b363-c04b3cb2c681",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ]
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Measure",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Measure]",
+            "lineageTag": "d8e3ae78-fda2-49e6-b8cb-b6257e927261",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Area",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Area]",
+            "lineageTag": "364ae39d-73bd-4527-91e4-0e649a23d8a7",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Format",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Format]",
+            "lineageTag": "ec17695c-dc59-4674-bdaa-bbdeb4131593",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Dynamic Measure-e40351ed-a523-4ff4-9185-7834b3fbb8e8",
+            "mode": "import",
+            "source": {
+              "type": "calculated",
+              "expression": "\nDATATABLE (\n    \"Code\", INTEGER,\n    \"Order\", INTEGER,\n    \"Measure\", STRING,\n    \"Area\", STRING,\n    \"Format\", STRING,\n    { \n        { 1, 1, \"Sales Amount\", \"Sales\", \"\\$#,0.00;(\\$#,0.00);\\$#,0.00\" },\n        { 2, 2, \"Sales Growth vs LY\", \"Sales\", \"0.000%\"},\n        { 3, 4, \"# Customers\", \"Marketing\", \"#,#\" },              \n        { 4, 2, \"Sales Qty\", \"Sales\", \"#,#\" },\n        { 5, 2, \"Sales Margin\", \"Sales\", \"\\$#,0.00;(\\$#,0.00);\\$#,0.00\" }\n    } \n)\n"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Value",
+            "expression": "\nIF (\n    HASONEVALUE ( 'Dynamic Measure'[Code] ),\n    var measureCode = SELECTEDVALUE('Dynamic Measure'[Code])\n    return SWITCH (\n       measureCode\n        ,1, [Sales Amount]\n        ,2, [Sales Amount  (% Δ LY)]\n        ,3, [# Customers (with Sales)]   \n        ,4, [Sales Qty]\n        ,5, [Margin]\n        ,BLANK ()\n    )\n)",
+            "lineageTag": "1f748dd6-758e-4445-bf6c-dab17d61d2ee",
+            "annotations": [
+              {
+                "name": "BestPracticeAnalyzer_IgnoreRules",
+                "value": "{\"RuleIDs\":[\"PROVIDE_FORMAT_STRING_FOR_MEASURES\",\"INTEGER_FORMATTING\"]}"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "Value (ly)",
+            "expression": "CALCULATE ( [Value], SAMEPERIODLASTYEAR('Calendar'[Date]) )",
+            "lineageTag": "59781612-6890-4665-a1b2-aa25324fe896",
+            "annotations": [
+              {
+                "name": "BestPracticeAnalyzer_IgnoreRules",
+                "value": "{\"RuleIDs\":[\"PROVIDE_FORMAT_STRING_FOR_MEASURES\",\"INTEGER_FORMATTING\"]}"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "Value (ytd)",
+            "expression": "CALCULATE([Value], DATESYTD('Calendar'[Date]))",
+            "lineageTag": "b01909c9-718c-48d2-98af-482b39bf2272",
+            "annotations": [
+              {
+                "name": "BestPracticeAnalyzer_IgnoreRules",
+                "value": "{\"RuleIDs\":[\"PROVIDE_FORMAT_STRING_FOR_MEASURES\",\"INTEGER_FORMATTING\"]}"
+              }
+            ]
+          },
+          {
+            "name": "Value Avg per Month",
+            "expression": "\n AVERAGEX(VALUES('Calendar'[Month (Year)]), [Value])",
+            "lineageTag": "ba87b819-2147-443b-aaeb-8ae1729c6550",
+            "annotations": [
+              {
+                "name": "BestPracticeAnalyzer_IgnoreRules",
+                "value": "{\"RuleIDs\":[\"PROVIDE_FORMAT_STRING_FOR_MEASURES\",\"INTEGER_FORMATTING\"]}"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "Value Daily Max",
+            "expression": "MAXX(VALUES('Calendar'[Date]), [Value])",
+            "lineageTag": "d8fbae5f-a0c0-4b2e-85e9-1e045d7510e0",
+            "annotations": [
+              {
+                "name": "BestPracticeAnalyzer_IgnoreRules",
+                "value": "{\"RuleIDs\":[\"PROVIDE_FORMAT_STRING_FOR_MEASURES\",\"INTEGER_FORMATTING\"]}"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "Value % (Δ ly)",
+            "expression": "\nvar ly =[Value (ly)]\nreturn\nDIVIDE(\n        [Value]- ly,\n        ly\n    )",
+            "formatString": "0.00%;-0.00%;0.00%",
+            "lineageTag": "897fe824-eb94-4ec9-996e-26238f4c2b23",
+            "changedProperties": [
+              {
+                "property": "FormatString"
+              }
+            ]
+          },
+          {
+            "name": "Value Normalized (by date)",
+            "expression": "\nVAR DetailValue = [Value]\nreturn if (DetailValue, \n\n    //VAR MinOfGroup = MINX(ALLSELECTED('Calendar'[Month (Year)], 'Calendar'[MonthYearId]), [Value])\n    //VAR MaxOfGroup = MAXX(ALLSELECTED('Calendar'[Month (Year)], 'Calendar'[MonthYearId]), [Value])\n    VAR MinOfGroup = MINX(ALLSELECTED('Calendar'), [Value])\n    VAR MaxOfGroup = MAXX(ALLSELECTED('Calendar'), [Value])\n    RETURN DIVIDE(DetailValue - MinOfGroup, MaxOfGroup - MinOfGroup)\n)",
+            "lineageTag": "15549406-fb29-46e8-9094-25add2c74995",
+            "annotations": [
+              {
+                "name": "BestPracticeAnalyzer_IgnoreRules",
+                "value": "{\"RuleIDs\":[\"PROVIDE_FORMAT_STRING_FOR_MEASURES\",\"INTEGER_FORMATTING\"]}"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_Id",
+            "value": "4d2f308d1af14ea3accf3c458621a9d7"
+          },
+          {
+            "name": "BestPracticeAnalyzer_IgnoreRules",
+            "value": "{\"RuleIDs\":[\"REDUCE_USAGE_OF_CALCULATED_TABLES\",\"ENSURE_TABLES_HAVE_RELATIONSHIPS\"]}"
+          }
+        ]
+      },
+      {
+        "name": "Store",
+        "description": "Store metadata",
+        "lineageTag": "54d5f884-12db-4e03-a120-08cd725db2c4",
+        "columns": [
+          {
+            "name": "StoreKey",
+            "dataType": "int64",
+            "isKey": true,
+            "sourceColumn": "StoreKey",
+            "formatString": "0",
+            "isAvailableInMdx": false,
+            "lineageTag": "b63bc7b8-266a-4424-9676-c3e68501b2ec",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Store Code",
+            "dataType": "string",
+            "sourceColumn": "Store Code",
+            "lineageTag": "307e3348-2132-4db3-b76a-771ac4561ef5",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Country",
+            "dataType": "string",
+            "sourceColumn": "Country",
+            "lineageTag": "7564fe29-ad01-43e0-ba93-2e1634e1a9b3",
+            "dataCategory": "Country",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "State",
+            "dataType": "string",
+            "sourceColumn": "State",
+            "lineageTag": "f471c9c0-1924-46e4-99d8-59ccf0f64cba",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Store",
+            "dataType": "string",
+            "sourceColumn": "Store",
+            "lineageTag": "7bee915f-7eb7-4dbc-a16f-e796f410b3f5",
+            "isDefaultLabel": true,
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Square Meters",
+            "dataType": "int64",
+            "sourceColumn": "Square Meters",
+            "formatString": "0",
+            "lineageTag": "1596588a-acc4-41c4-a692-310fd28994bb",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Open Date",
+            "dataType": "dateTime",
+            "sourceColumn": "Open Date",
+            "formatString": "Long Date",
+            "lineageTag": "66cf5168-4add-4a05-b2c8-0380a85b0539",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ]
+          },
+          {
+            "name": "Close Date",
+            "dataType": "dateTime",
+            "sourceColumn": "Close Date",
+            "formatString": "Long Date",
+            "lineageTag": "e627ea17-3b62-46f2-a2f4-549dc98beb06",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ]
+          },
+          {
+            "name": "Status",
+            "dataType": "string",
+            "sourceColumn": "Status",
+            "lineageTag": "93122991-3d6a-413c-ad26-3610fa90013b",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Store-c0e5ba98-f95a-4712-91ec-71c7dc35e177",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": "let\n    Source = #\"RAW-Store\",\n    #\"Renamed Columns\" = Table.RenameColumns(Source,{{\"Name\", \"Store\"}}),\n    #\"Changed Type\" = Table.TransformColumnTypes(#\"Renamed Columns\",{{\"StoreKey\", Int64.Type}, {\"Store Code\", type text}, {\"Country\", type text}, {\"State\", type text}, {\"Store\", type text}, {\"Square Meters\", Int64.Type}, {\"Open Date\", type date}, {\"Close Date\", type date}, {\"Status\", type text}})\nin\n    #\"Changed Type\""
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "# Stores",
+            "expression": "COUNTROWS('Store')",
+            "formatString": "#,##0",
+            "lineageTag": "868df9c8-f579-47d1-a776-3d29121df7c7",
+            "changedProperties": [
+              {
+                "property": "FormatString"
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ]
+      },
+      {
         "name": "About_NewName",
         "description": "Table with information about the model.\nKey/Value representation, with properties like: last refresh; model creator;...",
         "lineageTag": "68907830-e8ac-4c12-98d9-f70711413080",
@@ -2028,7 +2028,10 @@
                 "name": "Quantity"
               },
               {
-                "name": "Line Number"
+                "name": "Z_Order Number"
+              },
+              {
+                "name": "Line Number_C"
               },
               {
                 "name": "Order Date"
@@ -2052,16 +2055,13 @@
                 "name": "Unit Cost"
               },
               {
+                "name": "Currency Code_NewName"
+              },
+              {
                 "name": "Exchange Rate"
               },
               {
                 "name": "Environment"
-              },
-              {
-                "name": "Z_Order Number"
-              },
-              {
-                "name": "Currency Code_NewName"
               }
             ],
             "measures": [

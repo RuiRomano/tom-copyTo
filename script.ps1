@@ -3,7 +3,6 @@
 $currentPath = (Split-Path $MyInvocation.MyCommand.Definition -Parent)
 
 $sourceModelPath = "$currentPath\Model - A.bim"
-$targetModelPath = "$currentPath\Model - B.bim"
 
 Write-Host "Loading Module Assemblies"
 
@@ -37,7 +36,7 @@ foreach ($nuget in $nugets)
 
 $sourceModel = [Microsoft.AnalysisServices.Tabular.JsonSerializer]::DeserializeDatabase([System.IO.File]::ReadAllText($sourceModelPath))
 
-$targetModel = [Microsoft.AnalysisServices.Tabular.JsonSerializer]::DeserializeDatabase([System.IO.File]::ReadAllText($targetModelPath))
+$targetModel = [Microsoft.AnalysisServices.Tabular.JsonSerializer]::DeserializeDatabase([System.IO.File]::ReadAllText($sourceModelPath))
 
 $sourceModel.CopyTo($targetModel) | Out-Null
 

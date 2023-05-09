@@ -645,7 +645,7 @@
             ]
           },
           {
-            "name": "Line Number",
+            "name": "Line Number_C",
             "dataType": "int64",
             "sourceColumn": "Line Number",
             "formatString": "0",
@@ -2309,7 +2309,7 @@
                 "name": "Z_Order Number"
               },
               {
-                "name": "Line Number"
+                "name": "Line Number_C"
               },
               {
                 "name": "Order Date"
