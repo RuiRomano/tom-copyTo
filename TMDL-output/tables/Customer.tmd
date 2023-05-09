@@ -48,15 +48,6 @@ table Customer
 
 		annotation SummarizationSetBy = Automatic
 
-	column Address
-		dataType: String
-		isDataTypeInferred: false
-		lineageTag: adbeb074-7c67-40ee-be2d-d46775ce5e17
-		sourceColumn: Address
-		summarizeBy: None
-
-		annotation SummarizationSetBy = Automatic
-
 	column City
 		dataCategory: City
 		dataType: String
@@ -143,6 +134,15 @@ table Customer
 		isDataTypeInferred: false
 		lineageTag: 5c487309-c061-45ed-aa74-aba4d20bde3b
 		sourceColumn: Age
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column Address_NewName
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: adbeb074-7c67-40ee-be2d-d46775ce5e17
+		sourceColumn: Address
 		summarizeBy: None
 
 		annotation SummarizationSetBy = Automatic

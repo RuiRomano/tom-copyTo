@@ -48,7 +48,7 @@ table Customer
 
 		annotation SummarizationSetBy = Automatic
 
-	column Address
+	column Address_NewName
 		dataType: String
 		isDataTypeInferred: false
 		lineageTag: adbeb074-7c67-40ee-be2d-d46775ce5e17
