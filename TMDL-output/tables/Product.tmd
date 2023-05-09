@@ -1,7 +1,7 @@
 /// Product Catalog
 table Product
 	lineageTag: e9374b9a-faee-4f9e-b2e7-d9aafb9d6a91
-	ordinal: 3
+	ordinal: 2
 
 	partition 'Product-171f48b3-e0ea-4ea3-b9a0-c8c673eb0648' = M
 		mode: Import

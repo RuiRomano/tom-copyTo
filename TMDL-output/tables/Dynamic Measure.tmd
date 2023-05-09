@@ -2,7 +2,7 @@
 /// Useful to explore measure "as a dimension"
 table 'Dynamic Measure'
 	lineageTag: 208f785d-03c1-41ca-b33a-c56c36916caa
-	ordinal: 5
+	ordinal: 4
 
 	partition 'Dynamic Measure-e40351ed-a523-4ff4-9185-7834b3fbb8e8' = Calculated
 		mode: Import

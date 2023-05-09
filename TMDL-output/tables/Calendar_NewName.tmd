@@ -1,8 +1,8 @@
 /// Calendar table
-table Calendar
+table Calendar_NewName
 	dataCategory: Time
 	lineageTag: bfa0074c-0a44-4a9c-8bba-c87af778b3d7
-	ordinal: 1
+	ordinal: 7
 
 	partition 'Calendar-c9bc757b-0dad-4b99-8287-18a451a3c5c3' = M
 		mode: Import

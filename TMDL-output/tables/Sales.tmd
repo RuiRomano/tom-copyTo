@@ -1,7 +1,7 @@
 /// Sales table for year over year analysis
 table Sales
 	lineageTag: 97143e5b-7736-4fcb-8042-26b92b1f5684
-	ordinal: 2
+	ordinal: 1
 
 	partition 'Sales-ddb4c40b-46fd-49ea-9a19-16e7e640a21a' = M
 		mode: Import

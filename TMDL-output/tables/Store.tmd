@@ -1,7 +1,7 @@
 /// Store metadata
 table Store
 	lineageTag: 54d5f884-12db-4e03-a120-08cd725db2c4
-	ordinal: 6
+	ordinal: 5
 
 	partition 'Store-c0e5ba98-f95a-4712-91ec-71c7dc35e177' = M
 		mode: Import

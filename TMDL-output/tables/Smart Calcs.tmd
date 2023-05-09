@@ -1,6 +1,6 @@
 table 'Smart Calcs'
 	lineageTag: fa79b28a-6a9c-43b1-a775-099dabcd4428
-	ordinal: 4
+	ordinal: 3
 
 	partition Partition = CalculationGroup
 		mode: Import

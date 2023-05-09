@@ -1,5 +1,5 @@
 /// Calendar table
-table Calendar
+table Calendar_NewName
 	dataCategory: Time
 	lineageTag: bfa0074c-0a44-4a9c-8bba-c87af778b3d7
 	ordinal: 1
