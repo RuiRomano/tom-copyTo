@@ -1378,7 +1378,7 @@
         ]
       },
       {
-        "name": "Customer",
+        "name": "Customer_NewName",
         "description": "Customer data",
         "lineageTag": "04227f5a-0aeb-4448-b5c5-dbf3e276da85",
         "columns": [
@@ -1585,7 +1585,7 @@
         "measures": [
           {
             "name": "# Customers",
-            "expression": "COUNTROWS('Customer')",
+            "expression": "COUNTROWS('Customer_NewName')",
             "formatString": "#,##0",
             "lineageTag": "a8dc565a-aa9b-40dc-902c-1ba2596b0977"
           }
@@ -2262,7 +2262,7 @@
         "name": "d4e6dc5a-6f46-443d-ab94-4cc0e10323c6",
         "fromTable": "Sales",
         "fromColumn": "CustomerKey",
-        "toTable": "Customer",
+        "toTable": "Customer_NewName",
         "toColumn": "CustomerKey"
       },
       {

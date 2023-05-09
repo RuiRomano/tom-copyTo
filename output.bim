@@ -1247,219 +1247,6 @@
         ]
       },
       {
-        "name": "Customer",
-        "description": "Customer data",
-        "lineageTag": "04227f5a-0aeb-4448-b5c5-dbf3e276da85",
-        "columns": [
-          {
-            "name": "CustomerKey",
-            "dataType": "int64",
-            "isKey": true,
-            "sourceColumn": "CustomerKey",
-            "formatString": "0",
-            "isAvailableInMdx": false,
-            "lineageTag": "901662ed-f0ae-41f6-96b3-4aa68bad1c7a",
-            "summarizeBy": "none",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ]
-          },
-          {
-            "name": "Gender",
-            "dataType": "string",
-            "sourceColumn": "Gender",
-            "lineageTag": "7e0ce5eb-3e63-4870-b30a-032f5186375d",
-            "summarizeBy": "none",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ]
-          },
-          {
-            "name": "Customer",
-            "dataType": "string",
-            "sourceColumn": "Customer",
-            "lineageTag": "8845f8b5-b069-41a0-8af8-12e402b113e9",
-            "isDefaultLabel": true,
-            "summarizeBy": "none",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ]
-          },
-          {
-            "name": "Address",
-            "dataType": "string",
-            "sourceColumn": "Address",
-            "lineageTag": "adbeb074-7c67-40ee-be2d-d46775ce5e17",
-            "summarizeBy": "none",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ]
-          },
-          {
-            "name": "City",
-            "dataType": "string",
-            "sourceColumn": "City",
-            "lineageTag": "a791eb8c-7fab-418d-844a-f8b094453037",
-            "dataCategory": "City",
-            "summarizeBy": "none",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ]
-          },
-          {
-            "name": "State Code",
-            "dataType": "string",
-            "sourceColumn": "State Code",
-            "lineageTag": "29de3d16-fffa-4f61-8c39-c1a2a36d737a",
-            "dataCategory": "StateOrProvince",
-            "summarizeBy": "none",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ]
-          },
-          {
-            "name": "State",
-            "dataType": "string",
-            "sourceColumn": "State",
-            "lineageTag": "923b4cc1-6137-4bb4-bcb2-3a90c5f76c5e",
-            "dataCategory": "StateOrProvince",
-            "summarizeBy": "none",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ]
-          },
-          {
-            "name": "Zip Code",
-            "dataType": "string",
-            "sourceColumn": "Zip Code",
-            "lineageTag": "439ce0ee-437e-4770-90c4-c4d53ebfb35b",
-            "dataCategory": "PostalCode",
-            "summarizeBy": "none",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ]
-          },
-          {
-            "name": "Country Code",
-            "dataType": "string",
-            "sourceColumn": "Country Code",
-            "lineageTag": "f3eea279-4255-446b-9f83-f40f66abf6d1",
-            "dataCategory": "Country",
-            "summarizeBy": "none",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ]
-          },
-          {
-            "name": "Country",
-            "dataType": "string",
-            "sourceColumn": "Country",
-            "lineageTag": "99af44ae-86e9-4b75-98a3-e4b6e53fe806",
-            "dataCategory": "Country",
-            "summarizeBy": "none",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ]
-          },
-          {
-            "name": "Continent",
-            "dataType": "string",
-            "sourceColumn": "Continent",
-            "lineageTag": "53b840d2-962c-44c4-8733-6cc003fb9a83",
-            "dataCategory": "Continent",
-            "summarizeBy": "none",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ]
-          },
-          {
-            "name": "Birthday",
-            "dataType": "dateTime",
-            "sourceColumn": "Birthday",
-            "formatString": "General Date",
-            "lineageTag": "afa5e191-c690-45c1-a725-41c9d3ca9434",
-            "summarizeBy": "none",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ]
-          },
-          {
-            "name": "Age",
-            "dataType": "int64",
-            "sourceColumn": "Age",
-            "formatString": "0",
-            "lineageTag": "5c487309-c061-45ed-aa74-aba4d20bde3b",
-            "summarizeBy": "none",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ]
-          }
-        ],
-        "partitions": [
-          {
-            "name": "Customer-3757b886-e26c-4cec-a550-cdeea37b94d4",
-            "mode": "import",
-            "source": {
-              "type": "m",
-              "expression": "let\n    Source = #\"RAW-Customer\",\n    #\"Renamed Columns\" = Table.RenameColumns(Source,{{\"Name\", \"Customer\"}}),\n    #\"Changed Type\" = Table.TransformColumnTypes(#\"Renamed Columns\",{{\"CustomerKey\", Int64.Type}, {\"Gender\", type text}, {\"Customer\", type text}, {\"Address\", type text}, {\"City\", type text}, {\"State Code\", type text}, {\"State\", type text}, {\"Zip Code\", type text}, {\"Country Code\", type text}, {\"Country\", type text}, {\"Continent\", type text}, {\"Birthday\", type datetime}, {\"Age\", Int64.Type}})\nin\n    #\"Changed Type\""
-            }
-          }
-        ],
-        "measures": [
-          {
-            "name": "# Customers",
-            "expression": "COUNTROWS('Customer')",
-            "formatString": "#,##0",
-            "lineageTag": "a8dc565a-aa9b-40dc-902c-1ba2596b0977"
-          }
-        ],
-        "annotations": [
-          {
-            "name": "PBI_ResultType",
-            "value": "Table"
-          }
-        ]
-      },
-      {
         "name": "Smart Calcs",
         "lineageTag": "fa79b28a-6a9c-43b1-a775-099dabcd4428",
         "calculationGroup": {
@@ -1916,6 +1703,219 @@
         ]
       },
       {
+        "name": "Customer_NewName",
+        "description": "Customer data",
+        "lineageTag": "04227f5a-0aeb-4448-b5c5-dbf3e276da85",
+        "columns": [
+          {
+            "name": "CustomerKey",
+            "dataType": "int64",
+            "isKey": true,
+            "sourceColumn": "CustomerKey",
+            "formatString": "0",
+            "isAvailableInMdx": false,
+            "lineageTag": "901662ed-f0ae-41f6-96b3-4aa68bad1c7a",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Gender",
+            "dataType": "string",
+            "sourceColumn": "Gender",
+            "lineageTag": "7e0ce5eb-3e63-4870-b30a-032f5186375d",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Customer",
+            "dataType": "string",
+            "sourceColumn": "Customer",
+            "lineageTag": "8845f8b5-b069-41a0-8af8-12e402b113e9",
+            "isDefaultLabel": true,
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Address",
+            "dataType": "string",
+            "sourceColumn": "Address",
+            "lineageTag": "adbeb074-7c67-40ee-be2d-d46775ce5e17",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "City",
+            "dataType": "string",
+            "sourceColumn": "City",
+            "lineageTag": "a791eb8c-7fab-418d-844a-f8b094453037",
+            "dataCategory": "City",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "State Code",
+            "dataType": "string",
+            "sourceColumn": "State Code",
+            "lineageTag": "29de3d16-fffa-4f61-8c39-c1a2a36d737a",
+            "dataCategory": "StateOrProvince",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "State",
+            "dataType": "string",
+            "sourceColumn": "State",
+            "lineageTag": "923b4cc1-6137-4bb4-bcb2-3a90c5f76c5e",
+            "dataCategory": "StateOrProvince",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Zip Code",
+            "dataType": "string",
+            "sourceColumn": "Zip Code",
+            "lineageTag": "439ce0ee-437e-4770-90c4-c4d53ebfb35b",
+            "dataCategory": "PostalCode",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Country Code",
+            "dataType": "string",
+            "sourceColumn": "Country Code",
+            "lineageTag": "f3eea279-4255-446b-9f83-f40f66abf6d1",
+            "dataCategory": "Country",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Country",
+            "dataType": "string",
+            "sourceColumn": "Country",
+            "lineageTag": "99af44ae-86e9-4b75-98a3-e4b6e53fe806",
+            "dataCategory": "Country",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Continent",
+            "dataType": "string",
+            "sourceColumn": "Continent",
+            "lineageTag": "53b840d2-962c-44c4-8733-6cc003fb9a83",
+            "dataCategory": "Continent",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Birthday",
+            "dataType": "dateTime",
+            "sourceColumn": "Birthday",
+            "formatString": "General Date",
+            "lineageTag": "afa5e191-c690-45c1-a725-41c9d3ca9434",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Age",
+            "dataType": "int64",
+            "sourceColumn": "Age",
+            "formatString": "0",
+            "lineageTag": "5c487309-c061-45ed-aa74-aba4d20bde3b",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Customer-3757b886-e26c-4cec-a550-cdeea37b94d4",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": "let\n    Source = #\"RAW-Customer\",\n    #\"Renamed Columns\" = Table.RenameColumns(Source,{{\"Name\", \"Customer\"}}),\n    #\"Changed Type\" = Table.TransformColumnTypes(#\"Renamed Columns\",{{\"CustomerKey\", Int64.Type}, {\"Gender\", type text}, {\"Customer\", type text}, {\"Address\", type text}, {\"City\", type text}, {\"State Code\", type text}, {\"State\", type text}, {\"Zip Code\", type text}, {\"Country Code\", type text}, {\"Country\", type text}, {\"Continent\", type text}, {\"Birthday\", type datetime}, {\"Age\", Int64.Type}})\nin\n    #\"Changed Type\""
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "# Customers",
+            "expression": "COUNTROWS('Customer_NewName')",
+            "formatString": "#,##0",
+            "lineageTag": "a8dc565a-aa9b-40dc-902c-1ba2596b0977"
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ]
+      },
+      {
         "name": "About_NewName",
         "description": "Table with information about the model.\nKey/Value representation, with properties like: last refresh; model creator;...",
         "lineageTag": "68907830-e8ac-4c12-98d9-f70711413080",
@@ -1984,7 +1984,7 @@
         "name": "d4e6dc5a-6f46-443d-ab94-4cc0e10323c6",
         "fromTable": "Sales",
         "fromColumn": "CustomerKey",
-        "toTable": "Customer",
+        "toTable": "Customer_NewName",
         "toColumn": "CustomerKey"
       },
       {
