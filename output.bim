@@ -574,20 +574,6 @@
             ]
           },
           {
-            "name": "Order Number",
-            "dataType": "int64",
-            "sourceColumn": "Order Number",
-            "formatString": "0",
-            "lineageTag": "e2e629f1-f1fb-4444-a627-b121d77fdc06",
-            "summarizeBy": "none",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ]
-          },
-          {
             "name": "Line Number",
             "dataType": "int64",
             "sourceColumn": "Line Number",
@@ -813,6 +799,20 @@
                 "value": "Automatic"
               }
             ]
+          },
+          {
+            "name": "Z_Order Number",
+            "dataType": "int64",
+            "sourceColumn": "Order Number",
+            "formatString": "0",
+            "lineageTag": "e2e629f1-f1fb-4444-a627-b121d77fdc06",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
           }
         ],
         "partitions": [
@@ -994,255 +994,6 @@
           {
             "name": "PBI_NavigationStepName",
             "value": "Navigation"
-          }
-        ]
-      },
-      {
-        "name": "Product",
-        "description": "Product Catalog",
-        "lineageTag": "e9374b9a-faee-4f9e-b2e7-d9aafb9d6a91",
-        "columns": [
-          {
-            "name": "Product",
-            "dataType": "string",
-            "sourceColumn": "Product",
-            "lineageTag": "da435585-1f9a-44bd-ba2c-34c98f298cfc",
-            "isDefaultLabel": true,
-            "summarizeBy": "none",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ]
-          },
-          {
-            "name": "ProductKey",
-            "dataType": "int64",
-            "isKey": true,
-            "sourceColumn": "ProductKey",
-            "formatString": "0",
-            "isAvailableInMdx": false,
-            "lineageTag": "4184d53e-cd2d-4cbe-b8cb-04c72a750bc4",
-            "summarizeBy": "none",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ]
-          },
-          {
-            "name": "Product Code",
-            "dataType": "string",
-            "sourceColumn": "Product Code",
-            "lineageTag": "e9d204ad-76d8-4db9-9d1a-b9c07a4b50b2",
-            "summarizeBy": "none",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ]
-          },
-          {
-            "name": "Manufacturer",
-            "dataType": "string",
-            "sourceColumn": "Manufacturer",
-            "lineageTag": "59e45f50-f68d-44c3-becd-70ccd5a7eb7d",
-            "summarizeBy": "none",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ]
-          },
-          {
-            "name": "Brand",
-            "dataType": "string",
-            "sourceColumn": "Brand",
-            "lineageTag": "a71b235d-8f7e-4678-85a3-96a78d64bf87",
-            "summarizeBy": "none",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ]
-          },
-          {
-            "name": "Color",
-            "dataType": "string",
-            "sourceColumn": "Color",
-            "lineageTag": "7054b4d0-6d93-4c96-be74-800d02d96e43",
-            "summarizeBy": "none",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ]
-          },
-          {
-            "name": "Weight Unit Measure",
-            "dataType": "string",
-            "sourceColumn": "Weight Unit Measure",
-            "lineageTag": "78fcf7c4-2b5d-45b0-abf9-6ee3b3aa255b",
-            "summarizeBy": "none",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ]
-          },
-          {
-            "name": "Unit Cost",
-            "dataType": "decimal",
-            "sourceColumn": "Unit Cost",
-            "lineageTag": "f89fa3e3-061d-4269-8cd3-aa6ce2a464d2",
-            "summarizeBy": "none",
-            "changedProperties": [
-              {
-                "property": "DataType"
-              }
-            ],
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              },
-              {
-                "name": "PBI_FormatHint",
-                "value": "{\"isGeneralNumber\":true}"
-              }
-            ]
-          },
-          {
-            "name": "Unit Price",
-            "dataType": "decimal",
-            "sourceColumn": "Unit Price",
-            "lineageTag": "ef300027-e4eb-4c7d-9770-ab8f6dab6b15",
-            "summarizeBy": "none",
-            "changedProperties": [
-              {
-                "property": "DataType"
-              }
-            ],
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              },
-              {
-                "name": "PBI_FormatHint",
-                "value": "{\"isGeneralNumber\":true}"
-              }
-            ]
-          },
-          {
-            "name": "Subcategory Code",
-            "dataType": "string",
-            "sourceColumn": "Subcategory Code",
-            "lineageTag": "7cd08eb9-2cad-4263-ae88-8c5121a68b7e",
-            "summarizeBy": "none",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ]
-          },
-          {
-            "name": "Subcategory",
-            "dataType": "string",
-            "sourceColumn": "Subcategory",
-            "lineageTag": "0a208c62-4bdd-4873-af18-ebc286c5b3bb",
-            "summarizeBy": "none",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ]
-          },
-          {
-            "name": "Category Code",
-            "dataType": "string",
-            "sourceColumn": "Category Code",
-            "lineageTag": "c0fc218a-5a06-4757-9172-2d303a67f3ff",
-            "summarizeBy": "none",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ]
-          },
-          {
-            "name": "Category",
-            "dataType": "string",
-            "sourceColumn": "Category",
-            "lineageTag": "0f4b99cc-fdb6-4f04-b7d9-bbdcf7b2c601",
-            "summarizeBy": "none",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ]
-          },
-          {
-            "name": "Weight2",
-            "dataType": "decimal",
-            "sourceColumn": "Weight",
-            "lineageTag": "a6299b36-bd05-4b41-8493-e45359af237b",
-            "summarizeBy": "none",
-            "changedProperties": [
-              {
-                "property": "DataType"
-              }
-            ],
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              },
-              {
-                "name": "PBI_FormatHint",
-                "value": "{\"isGeneralNumber\":true}"
-              }
-            ]
-          }
-        ],
-        "partitions": [
-          {
-            "name": "Product-171f48b3-e0ea-4ea3-b9a0-c8c673eb0648",
-            "mode": "import",
-            "source": {
-              "type": "m",
-              "expression": "let\n    Source = #\"RAW-Product\",\n    #\"Renamed Columns\" = Table.RenameColumns(Source,{{\"Product Name\", \"Product\"}}),\n    #\"Changed Type\" = Table.TransformColumnTypes(#\"Renamed Columns\",{{\"ProductKey\", Int64.Type}, {\"Product Code\", type text}, {\"Product\", type text}, {\"Manufacturer\", type text}, {\"Brand\", type text}, {\"Color\", type text}, {\"Weight Unit Measure\", type text}, {\"Weight\", type number}, {\"Unit Cost\", type number}, {\"Unit Price\", type number}, {\"Subcategory Code\", type text}, {\"Subcategory\", type text}, {\"Category Code\", type text}, {\"Category\", type text}})\nin\n    #\"Changed Type\""
-            }
-          }
-        ],
-        "measures": [
-          {
-            "name": "# Products",
-            "expression": "COUNTROWS('Product')",
-            "formatString": "#,##0",
-            "lineageTag": "1f8f1a2a-06b6-4989-8af7-212719cf3617"
-          }
-        ],
-        "changedProperties": [
-          {
-            "property": "Name"
-          }
-        ],
-        "annotations": [
-          {
-            "name": "PBI_ResultType",
-            "value": "Table"
           }
         ]
       },
@@ -1703,6 +1454,255 @@
         ]
       },
       {
+        "name": "Product_NewName",
+        "description": "Product Catalog",
+        "lineageTag": "e9374b9a-faee-4f9e-b2e7-d9aafb9d6a91",
+        "columns": [
+          {
+            "name": "Product",
+            "dataType": "string",
+            "sourceColumn": "Product",
+            "lineageTag": "da435585-1f9a-44bd-ba2c-34c98f298cfc",
+            "isDefaultLabel": true,
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ProductKey",
+            "dataType": "int64",
+            "isKey": true,
+            "sourceColumn": "ProductKey",
+            "formatString": "0",
+            "isAvailableInMdx": false,
+            "lineageTag": "4184d53e-cd2d-4cbe-b8cb-04c72a750bc4",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Product Code",
+            "dataType": "string",
+            "sourceColumn": "Product Code",
+            "lineageTag": "e9d204ad-76d8-4db9-9d1a-b9c07a4b50b2",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Manufacturer",
+            "dataType": "string",
+            "sourceColumn": "Manufacturer",
+            "lineageTag": "59e45f50-f68d-44c3-becd-70ccd5a7eb7d",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Brand",
+            "dataType": "string",
+            "sourceColumn": "Brand",
+            "lineageTag": "a71b235d-8f7e-4678-85a3-96a78d64bf87",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Color",
+            "dataType": "string",
+            "sourceColumn": "Color",
+            "lineageTag": "7054b4d0-6d93-4c96-be74-800d02d96e43",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Weight Unit Measure",
+            "dataType": "string",
+            "sourceColumn": "Weight Unit Measure",
+            "lineageTag": "78fcf7c4-2b5d-45b0-abf9-6ee3b3aa255b",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Weight2",
+            "dataType": "decimal",
+            "sourceColumn": "Weight",
+            "lineageTag": "a6299b36-bd05-4b41-8493-e45359af237b",
+            "summarizeBy": "none",
+            "changedProperties": [
+              {
+                "property": "DataType"
+              }
+            ],
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "Unit Cost",
+            "dataType": "decimal",
+            "sourceColumn": "Unit Cost",
+            "lineageTag": "f89fa3e3-061d-4269-8cd3-aa6ce2a464d2",
+            "summarizeBy": "none",
+            "changedProperties": [
+              {
+                "property": "DataType"
+              }
+            ],
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "Unit Price",
+            "dataType": "decimal",
+            "sourceColumn": "Unit Price",
+            "lineageTag": "ef300027-e4eb-4c7d-9770-ab8f6dab6b15",
+            "summarizeBy": "none",
+            "changedProperties": [
+              {
+                "property": "DataType"
+              }
+            ],
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "Subcategory Code",
+            "dataType": "string",
+            "sourceColumn": "Subcategory Code",
+            "lineageTag": "7cd08eb9-2cad-4263-ae88-8c5121a68b7e",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Subcategory",
+            "dataType": "string",
+            "sourceColumn": "Subcategory",
+            "lineageTag": "0a208c62-4bdd-4873-af18-ebc286c5b3bb",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Category Code",
+            "dataType": "string",
+            "sourceColumn": "Category Code",
+            "lineageTag": "c0fc218a-5a06-4757-9172-2d303a67f3ff",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Category",
+            "dataType": "string",
+            "sourceColumn": "Category",
+            "lineageTag": "0f4b99cc-fdb6-4f04-b7d9-bbdcf7b2c601",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Product-171f48b3-e0ea-4ea3-b9a0-c8c673eb0648",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": "let\n    Source = #\"RAW-Product\",\n    #\"Renamed Columns\" = Table.RenameColumns(Source,{{\"Product Name\", \"Product\"}}),\n    #\"Changed Type\" = Table.TransformColumnTypes(#\"Renamed Columns\",{{\"ProductKey\", Int64.Type}, {\"Product Code\", type text}, {\"Product\", type text}, {\"Manufacturer\", type text}, {\"Brand\", type text}, {\"Color\", type text}, {\"Weight Unit Measure\", type text}, {\"Weight\", type number}, {\"Unit Cost\", type number}, {\"Unit Price\", type number}, {\"Subcategory Code\", type text}, {\"Subcategory\", type text}, {\"Category Code\", type text}, {\"Category\", type text}})\nin\n    #\"Changed Type\""
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "# Products",
+            "expression": "COUNTROWS('Product_NewName')",
+            "formatString": "#,##0",
+            "lineageTag": "1f8f1a2a-06b6-4989-8af7-212719cf3617"
+          }
+        ],
+        "changedProperties": [
+          {
+            "property": "Name"
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ]
+      },
+      {
         "name": "Customer_NewName",
         "description": "Customer data",
         "lineageTag": "04227f5a-0aeb-4448-b5c5-dbf3e276da85",
@@ -2006,7 +2006,7 @@
         "name": "bb5c5591-a0ff-4ce4-a62e-6c5f56006368",
         "fromTable": "Sales",
         "fromColumn": "ProductKey",
-        "toTable": "Product",
+        "toTable": "Product_NewName",
         "toColumn": "ProductKey"
       },
       {
@@ -2026,9 +2026,6 @@
             "columns": [
               {
                 "name": "Quantity"
-              },
-              {
-                "name": "Order Number"
               },
               {
                 "name": "Line Number"
@@ -2062,6 +2059,9 @@
               },
               {
                 "name": "Environment"
+              },
+              {
+                "name": "Z_Order Number"
               }
             ],
             "measures": [
@@ -2116,7 +2116,7 @@
             ]
           },
           {
-            "name": "Product",
+            "name": "Product_NewName",
             "columns": [
               {
                 "name": "Product"
@@ -2140,6 +2140,9 @@
                 "name": "Weight Unit Measure"
               },
               {
+                "name": "Weight2"
+              },
+              {
                 "name": "Unit Cost"
               },
               {
@@ -2156,9 +2159,6 @@
               },
               {
                 "name": "Category"
-              },
-              {
-                "name": "Weight2"
               }
             ],
             "measures": [

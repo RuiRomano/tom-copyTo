@@ -1,0 +1,140 @@
+perspective Sales
+
+	perspectiveTable Sales
+		table: Sales.Sales
+
+		perspectiveMeasure '# Customers (with Sales)'
+			measure: Sales.'# Customers (with Sales)'
+
+		perspectiveMeasure '# Products (with Sales)'
+			measure: Sales.'# Products (with Sales)'
+
+		perspectiveMeasure 'Sales Qty'
+			measure: Sales.'Sales Qty'
+
+		perspectiveMeasure 'Sales Amount'
+			measure: Sales.'Sales Amount'
+
+		perspectiveMeasure 'Sales Amount  (Δ LY)'
+			measure: Sales.'Sales Amount  (Δ LY)'
+
+		perspectiveMeasure 'Sales Amount (LY)'
+			measure: Sales.'Sales Amount (LY)'
+
+		perspectiveMeasure 'Sales Amount (YTD, LY)'
+			measure: Sales.'Sales Amount (YTD, LY)'
+
+		perspectiveMeasure 'Sales Amount (YTD)'
+			measure: Sales.'Sales Amount (YTD)'
+
+		perspectiveMeasure 'Sales Amount Avg per Day'
+			measure: Sales.'Sales Amount Avg per Day'
+
+		perspectiveMeasure 'Sales Amount  (% Δ LY)'
+			measure: Sales.'Sales Amount  (% Δ LY)'
+
+		perspectiveMeasure Margin
+			measure: Sales.Margin
+
+		perspectiveMeasure 'Margin (ly)'
+			measure: Sales.'Margin (ly)'
+
+		perspectiveMeasure '# Sales'
+			measure: Sales.'# Sales'
+
+		perspectiveMeasure 'Sales Qty by Delivery Date'
+			measure: Sales.'Sales Qty by Delivery Date'
+
+		perspectiveMeasure 'Sales Amount (12M average)'
+			measure: Sales.'Sales Amount (12M average)'
+
+		perspectiveMeasure 'Sales Amount (6M average)'
+			measure: Sales.'Sales Amount (6M average)'
+
+		perspectiveColumn Quantity
+			column: Sales.Quantity
+
+		perspectiveColumn 'Order Number'
+			column: Sales.'Order Number'
+
+		perspectiveColumn 'Line Number'
+			column: Sales.'Line Number'
+
+		perspectiveColumn 'Order Date'
+			column: Sales.'Order Date'
+
+		perspectiveColumn 'Delivery Date'
+			column: Sales.'Delivery Date'
+
+		perspectiveColumn CustomerKey
+			column: Sales.CustomerKey
+
+		perspectiveColumn StoreKey
+			column: Sales.StoreKey
+
+		perspectiveColumn ProductKey
+			column: Sales.ProductKey
+
+		perspectiveColumn 'Net Price'
+			column: Sales.'Net Price'
+
+		perspectiveColumn 'Unit Cost'
+			column: Sales.'Unit Cost'
+
+		perspectiveColumn 'Currency Code'
+			column: Sales.'Currency Code'
+
+		perspectiveColumn 'Exchange Rate'
+			column: Sales.'Exchange Rate'
+
+		perspectiveColumn Environment
+			column: Sales.Environment
+
+	perspectiveTable Product
+		table: Product.Product
+
+		perspectiveMeasure '# Products'
+			measure: Product.'# Products'
+
+		perspectiveColumn Product
+			column: Product.Product
+
+		perspectiveColumn ProductKey
+			column: Product.ProductKey
+
+		perspectiveColumn 'Product Code'
+			column: Product.'Product Code'
+
+		perspectiveColumn Manufacturer
+			column: Product.Manufacturer
+
+		perspectiveColumn Brand
+			column: Product.Brand
+
+		perspectiveColumn Color
+			column: Product.Color
+
+		perspectiveColumn 'Weight Unit Measure'
+			column: Product.'Weight Unit Measure'
+
+		perspectiveColumn Weight
+			column: Product.Weight
+
+		perspectiveColumn 'Unit Cost'
+			column: Product.'Unit Cost'
+
+		perspectiveColumn 'Unit Price'
+			column: Product.'Unit Price'
+
+		perspectiveColumn 'Subcategory Code'
+			column: Product.'Subcategory Code'
+
+		perspectiveColumn Subcategory
+			column: Product.Subcategory
+
+		perspectiveColumn 'Category Code'
+			column: Product.'Category Code'
+
+		perspectiveColumn Category
+			column: Product.Category
+

@@ -631,7 +631,7 @@
             ]
           },
           {
-            "name": "Order Number",
+            "name": "Z_Order Number",
             "dataType": "int64",
             "sourceColumn": "Order Number",
             "formatString": "0",
@@ -1122,7 +1122,7 @@
         ]
       },
       {
-        "name": "Product",
+        "name": "Product_NewName",
         "description": "Product Catalog",
         "lineageTag": "e9374b9a-faee-4f9e-b2e7-d9aafb9d6a91",
         "columns": [
@@ -1360,7 +1360,7 @@
         "measures": [
           {
             "name": "# Products",
-            "expression": "COUNTROWS('Product')",
+            "expression": "COUNTROWS('Product_NewName')",
             "formatString": "#,##0",
             "lineageTag": "1f8f1a2a-06b6-4989-8af7-212719cf3617"
           }
@@ -2284,7 +2284,7 @@
         "name": "bb5c5591-a0ff-4ce4-a62e-6c5f56006368",
         "fromTable": "Sales",
         "fromColumn": "ProductKey",
-        "toTable": "Product",
+        "toTable": "Product_NewName",
         "toColumn": "ProductKey"
       },
       {
@@ -2306,7 +2306,7 @@
                 "name": "Quantity"
               },
               {
-                "name": "Order Number"
+                "name": "Z_Order Number"
               },
               {
                 "name": "Line Number"
@@ -2394,7 +2394,7 @@
             ]
           },
           {
-            "name": "Product",
+            "name": "Product_NewName",
             "columns": [
               {
                 "name": "Product"

@@ -2,8 +2,8 @@
 
 $currentPath = (Split-Path $MyInvocation.MyCommand.Definition -Parent)
 
-$sourceModelPath = "$currentPath\Model - A.bim"
-$targetModelPath = "$currentPath\Model - B.bim"
+$sourceModelPath = "$currentPath\TMDL-A"
+$targetModelPath = "$currentPath\TMDL-B"
 
 Write-Host "Loading Module Assemblies"
 
@@ -16,7 +16,15 @@ $nugets = @(
         path = @("lib\netcoreapp3.0\Microsoft.AnalysisServices.Tabular.dll"
         , "lib\netcoreapp3.0\Microsoft.AnalysisServices.Tabular.Json.dll"
         )
-    }       
+    }
+    ,
+    @{
+        name = "Microsoft.AnalysisServices.Tabular.Tmdl.NetCore.retail.amd64"
+        ;
+        version = "19.64.0-TmdlPreview"
+        ;
+        path = @("lib\netcoreapp3.0\Microsoft.AnalysisServices.Tabular.Tmdl.dll")
+    }
 )
 
 foreach ($nuget in $nugets)
@@ -35,12 +43,11 @@ foreach ($nuget in $nugets)
    
 }
 
-$sourceModel = [Microsoft.AnalysisServices.Tabular.JsonSerializer]::DeserializeDatabase([System.IO.File]::ReadAllText($sourceModelPath))
+$sourceModel = [Microsoft.AnalysisServices.Tabular.TmdlSerializer]::DeserializeModel($sourceModelPath)
 
-$targetModel = [Microsoft.AnalysisServices.Tabular.JsonSerializer]::DeserializeDatabase([System.IO.File]::ReadAllText($targetModelPath))
+$targetModel = [Microsoft.AnalysisServices.Tabular.TmdlSerializer]::DeserializeModel($targetModelPath)
 
-$sourceModel.CopyTo($targetModel) | Out-Null
+$sourceModel.CopyTo($targetModel)
 
-$outputStr = [Microsoft.AnalysisServices.Tabular.JsonSerializer]::SerializeDatabase($targetModel)
+[Microsoft.AnalysisServices.Tabular.TmdlSerializer]::SerializeModel($targetModel, "$currentPath\TMDL-output")
 
-$outputStr | Out-File "$currentPath\output.bim"
